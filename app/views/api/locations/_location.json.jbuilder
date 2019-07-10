@@ -1,1 +1,0 @@
- json.extract! location, :name, :long, :lat, :inside?
