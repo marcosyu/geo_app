@@ -5,4 +5,5 @@ json.geometry do
 end
 json.properties do
   json.name location.name
+  json.inside? location.inside?
 end
