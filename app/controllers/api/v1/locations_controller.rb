@@ -11,7 +11,7 @@ module Api::V1
       @location  = Location.new(location_params)
 
       if @location.save
-        Resque.enqueue(LocationJob, @location.id)
+        LocationJob.perform_later(Location.last.id)
       end
 
       render json: @location.id
