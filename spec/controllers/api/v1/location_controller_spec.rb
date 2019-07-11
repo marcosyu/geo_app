@@ -1,10 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::LocationsController, type: :controller do
-  include ActiveJob::TestHelper
+
   before(:all) do
     Location.destroy_all
+    Geocoder.configure(lookup: :test, ip_lookup: :test)
+
+    Geocoder::Lookup::Test.add_stub(
+      "New York, NY", [
+        {
+          'lat'          => 40.7143528,
+          'lon'          => -74.0059731,
+          'address'      => 'New York, NY, USA',
+          'state'        => 'New York',
+          'state_code'   => 'NY',
+          'country'      => 'United States',
+          'country_code' => 'US'
+        }
+      ]
+    )
   end
+
   after(:all) do
     Resque.remove_queue('location_job')
   end

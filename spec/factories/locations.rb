@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :location  do
-    name { FFaker::Address.city }
+    name { "New York, NY" }
   end
 end
