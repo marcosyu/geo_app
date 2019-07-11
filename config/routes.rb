@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       end
     end
   end
+  mount Resque::Server.new, :at => "/resque"
 
 end
