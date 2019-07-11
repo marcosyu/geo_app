@@ -1,1 +1,1 @@
-Resque.redis = Rails.env.production? ? $redis : "localhost:6379"
+Resque.redis = ENV["REDISTOGO_URL"] ? $redis : "localhost:6379"
